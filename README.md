@@ -6,7 +6,7 @@ An ESP8266-based TOTP desktop display based on the Wemos D1 ESP-Wroom-02 Motherb
 
 ## Firmware
 
-The device firmware is written using Arduino for ESP8266 - https://github.com/esp8266/Arduino.
+The device firmware is written using Arduino for ESP8266 - https://github.com/esp8266/Arduino. See this page for details on getting a dev. env. up and running.
 
 ### Dependencies
 
