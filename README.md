@@ -26,3 +26,13 @@ The display enclosure can be CNC milled using the included Gcode
 
 ![Alt text](/images/wemos_front.png?raw=true "Display enclosure front")
 ![Alt text](/images/wemos_back.png?raw=true "Display enclosure back")
+
+## Manually uploading firmware
+
+You can upload a firmware image without setting up a full Arduino dev. env. by using esptool (https://github.com/espressif/esptool - Install esptool with `pip install esptool`) and the folling command:
+
+```
+sudo esptool.py --chip esp8266 --port /dev/cu.usbserial-0001 --baud 921600 write_flash 0x0 ./firmware/ESPTOTP.ino.bin
+```
+
+The current / default firmware can be found in the `/firmware` folder of this repository.
