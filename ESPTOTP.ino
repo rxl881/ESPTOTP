@@ -457,6 +457,7 @@ void setup() {
 
   // Start FS
   SPIFFS.begin();
+  const char* defaultSecret = "ssssssssssssssssssssssssss";
   if (SPIFFS.exists("/config.json")) {
     File configFile = SPIFFS.open("/config.json", "r");
     if (configFile) {
@@ -470,12 +471,16 @@ void setup() {
       if ( ! deserializeError ) {
           String output;
           serializeJsonPretty(json, output);
-          strcpy(totpSecretString, json["totp_secret"]);
+          if (strlen(json["totp_secret"]) > 0) {
+            strcpy(totpSecretString, json["totp_secret"]);
+          } else {
+            strcpy(totpSecretString, defaultSecret);
+          }
       }
     }
   } else {
     Serial.println("Config not present");
-    strcpy(totpSecretString, "ssssssssssssssssssssssssss");
+    strcpy(totpSecretString, defaultSecret);
   }
 
   // Intialise TOTP code generation
